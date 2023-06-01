@@ -1,21 +1,3 @@
-Vite-ts-electron-for-react
-
-手动创建本项目步骤(vue技术和本文内容一样)
-
-1、yarn create vite 选择react ts swc 并安装完依赖
-
-2、根目录创建electron文件夹
-
-3、修改package.json 加上 
-```javacsript
-"main": "electron/main.ts"
-
-"start": "electron ."
-```
-
-4.electron文件夹创建main.ts并加入以下内容
-
-```javacsript
 // 控制应用生命周期和创建原生浏览器窗口的模组
 const { app, BrowserWindow, Menu } = require('electron')
 const path = require('path')
@@ -85,16 +67,3 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
-```
-
-5、启动项目
-```javascript
-开两个cmd或powershell，先运行yarn run dev 再运行yarn start
-```
-
-
-app.tsx 照葫芦画瓢 或者有vue经验基本就可以改造了
-
-现在可以用react vite ts开发electron应用了，electron最重要的是打包 本人正在百度研究中...
-
-话说vite启动速度真是吊打webpack
