@@ -5,8 +5,11 @@ const path = require('path')
 function createWindow() {
   // 创建浏览器窗口
   let mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 800,
+    // 这是左上角icon图标 
+    icon: require('path').join(__dirname, 'icon.ico'),
+    // frame: false, // 去除边框
     webPreferences: {
       // 书写渲染进程中的配置
       contextIsolation: true, // 可以使用require方法
@@ -17,8 +20,10 @@ function createWindow() {
       nodeIntegrationInSubFrames: true // 是否允许在子页面(iframe)或子窗口(child window)中集成Node.js
     },
   })
-  // console.log("../../index.html")
+  // 关闭默认菜单
+  Menu.setApplicationMenu(null)
 
+  
   // 解决应用启动白屏问题
   mainWindow.on('ready-to-show', () => {
     mainWindow.show();
@@ -30,14 +35,11 @@ function createWindow() {
     mainWindow = null;
   });
 
-  //env配置方便打包成应用
-  let env = 'pro'
+  //process.env.BASE_URL 打包用
+  // process.env.BASE_URL == 'http://localhost:3001'
   // 配置热更新
-  if (env == 'pro') {
-    const elePath = path.join(__dirname, '../node_modules/electron')
-    require('electron-reload')('../', {
-      electron: require(elePath),
-    })
+  let env = "pro"
+  if (env = 'pro') {
     // 热更新监听vite窗口
     mainWindow.loadURL('http://localhost:3000')
     // 打开开发工具

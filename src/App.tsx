@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import typescriptLogo from '/typescript.png'
-import electronLogo from '/electron.svg'
+import reactLogo from '/img/react.svg'
+import viteLogo from '/img/vite.svg'
+import typescriptLogo from '/img/typescript.png'
+import electronLogo from '/img/electron.svg'
 import './App.css'
 
 function App() {
@@ -11,16 +11,28 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
+        {/* <a href="https://vitejs.dev" onClick={() => { return false; }}>
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
+        <a href="https://react.dev" onClick={() => { return false; }}>
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-        <a href="https://www.typescriptlang.org" target="_blank">
+        <a href="https://www.typescriptlang.org" onClick={() => { return false; }}>
           <img src={typescriptLogo} className="logo typescript" alt="TypeScript logo" />
         </a>
-        <a href="https://www.electronjs.org" target="_blank">
+        <a href="https://www.electronjs.org" onClick={() => { return false; }}>
+          <img src={electronLogo} className="logo electron" alt="Electron logo" />
+        </a> */}
+        <a href='javascript(0)'>
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href='javascript(0)'>
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+        <a href='javascript(0)'>
+          <img src={typescriptLogo} className="logo typescript" alt="TypeScript logo" />
+        </a>
+        <a href='javascript(0)'>
           <img src={electronLogo} className="logo electron" alt="Electron logo" />
         </a>
 
@@ -28,15 +40,16 @@ function App() {
       <h1>Vite + React + TypeScript + Electron</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          点击总数是 {count}
         </button>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          编辑 <code>src/App.tsx</code>并保存以测试HMR
         </p>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        点击Vite、React、TypeScript和Electron图标了解更多信息
       </p>
+      <p className="read-the-docs">当前请求后端地址为：{process.env.BASE_URL}</p>
     </>
   )
 }

@@ -52,10 +52,6 @@ function createWindow() {
   let env = 'pro'
   // 配置热更新
   if (env == 'pro') {
-    const elePath = path.join(__dirname, '../node_modules/electron')
-    require('electron-reload')('../', {
-      electron: require(elePath),
-    })
     // 热更新监听vite窗口
     mainWindow.loadURL('http://localhost:3000')
     // 打开开发工具
@@ -95,6 +91,4 @@ app.on('window-all-closed', function () {
 
 app.tsx 照葫芦画瓢 或者有vue经验基本就可以改造了
 
-现在可以用react vite ts开发electron应用了，electron最重要的是打包 本人正在百度研究中...
-
-话说vite启动速度真是吊打webpack
+现在可以用react vite ts开发electron应用了
