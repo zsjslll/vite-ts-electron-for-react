@@ -1,2 +1,1 @@
-git clone
-yarn
+Git clone After this project, please ensure that the node running environment has been installed on your Windows computer (Taobao image needs to be configured in Chinese Mainland), and then execute yarn. If you are unwilling to install yarn, please execute npm i, "npm i" is equivalent to "npm install". After the dependency installation is completed, execute "npm run start" or "yarn start". Just a moment, you can write your Electron application
