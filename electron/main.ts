@@ -1,6 +1,7 @@
 // 控制应用生命周期和创建原生浏览器窗口的模组
 const { app, BrowserWindow, Menu } = require('electron')
 const path = require('path')
+const isDevelopment = !app.isPackaged;
 
 function createWindow() {
   // 创建浏览器窗口
@@ -8,7 +9,7 @@ function createWindow() {
     width: 1200,
     height: 800,
     // 这是左上角icon图标 
-    icon: require('path').join(__dirname, 'icon.ico'),
+    icon:require('path').join(process.cwd(), 'public/img/react.ico'),
     // frame: false, // 去除边框
     webPreferences: {
       // 书写渲染进程中的配置
@@ -21,9 +22,9 @@ function createWindow() {
     },
   })
   // 关闭默认菜单
-  Menu.setApplicationMenu(null)
+  // Menu.setApplicationMenu(null)
 
-  
+
   // 解决应用启动白屏问题
   mainWindow.on('ready-to-show', () => {
     mainWindow.show();
@@ -34,12 +35,10 @@ function createWindow() {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
-
-  //process.env.BASE_URL 打包用
-  // process.env.BASE_URL == 'http://localhost:3001'
-  // 配置热更新
-  let env = "pro"
-  if (env = 'pro') {
+  //isDevelopment 打包用
+  if (isDevelopment) {
+     // 配置热更新
+    require('electron-reload')('../', {electron: require(path.join(process.cwd(), "/node_modules/electron")),})
     // 热更新监听vite窗口
     mainWindow.loadURL('http://localhost:3000')
     // 打开开发工具
